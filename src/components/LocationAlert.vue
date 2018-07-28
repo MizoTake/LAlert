@@ -2,7 +2,9 @@
   <div id='locationAlert'>
     <p>Location is: {{ latitude }} {{ longitude }}</p>
     <p>Location distance is: {{ distance }} km</p>
+    <p>latitude</p>
     <p><input v-model="inputLat" type='text' placeholder='latitude'></p>
+    <p>longitude</p>
     <p><input v-model="inputLon" type='text' placeholder='longitude'></p>
     <button @click='updateLocation()'>Settings and start </button>
     <router-view/>
@@ -16,8 +18,8 @@ export default {
     return {
       latitude: 0,
       longitude: 0,
-      inputLat: 0,
-      inputLon: 0,
+      inputLat: 33.794468,
+      inputLon: 130.528826,
       onekmIsLongitude: 0.0090133729745762,
       onekmIsLatitude: 0.010966404715491394,
       distance: 0
