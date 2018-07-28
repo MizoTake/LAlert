@@ -1,6 +1,6 @@
 <template>
   <div id='locationAlert'>
-    <p><label id='center_label' class="mdl-textfield__label">このサイトは位置情報をONにし、指定の緯度経度と現在地の距離を測ります。<br>現在地が指定の位置の半径5km以内であればスマートフォンを扱いの場合バイブレーションが鳴ります</label></p>
+    <p><label id='center_label' class="mdl-textfield__label">このサイトは位置情報をONにし、<br>指定の緯度経度と現在地の距離を測ります。<br>現在地が指定の位置の半径5km以内であれば<br>スマホの場合バイブレーションが作動します</label></p>
     <p><label id='center_label' class="mdl-textfield__label">Location is: {{ latitude }} {{ longitude }}</label></p>
     <p><label id='center_label' class="mdl-textfield__label">Location distance is: {{ distance }} km</label></p>
     <p><label id='field_label'  class="mdl-textfield__label">latitude</label></p>
@@ -75,11 +75,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
-#locationAlert {
-  padding: 0px 100px 100px 100px;
-  position: relative;
-  text-align: center;
 }
 #center_label {
   padding: 0px 10px 5px 0px;
