@@ -7,7 +7,6 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      base: process.env.ROOT_BASE,
       path: '/',
       name: 'locationAlert',
       component: LocationAlert
