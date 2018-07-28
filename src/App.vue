@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "app",
+  name: "App",
   data: {
     error: "",
     lat: "",
