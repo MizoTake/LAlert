@@ -2,8 +2,8 @@
   <div id='locationAlert'>
     <p>Location is: {{ latitude }} {{ longitude }}</p>
     <p>Location distance is: {{ distance }} km</p>
-    <p><input v-model="inputLat" type='text' placeholder='lat'></p>
-    <p><input v-model="inputLon" type='text' placeholder='lon'></p>
+    <p><input v-model="inputLat" type='text' placeholder='latitude'></p>
+    <p><input v-model="inputLon" type='text' placeholder='longitude'></p>
     <button @click='updateLocation()'>Settings and start </button>
     <router-view/>
   </div>
@@ -42,6 +42,9 @@ export default {
       disLat *= disLat
       disLon *= disLon
       this.distance = Math.sqrt(disLat + disLon)
+      if (this.distance < 5.0) {
+        navigator.vibrate(3000)
+      }
       console.log(position.coords)
     }
   }
