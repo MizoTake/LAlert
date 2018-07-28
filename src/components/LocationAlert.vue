@@ -1,12 +1,26 @@
 <template>
   <div id='locationAlert'>
-    <p>Location is: {{ latitude }} {{ longitude }}</p>
-    <p>Location distance is: {{ distance }} km</p>
-    <p>latitude</p>
-    <p><input v-model="inputLat" type='text' placeholder='latitude'></p>
-    <p>longitude</p>
-    <p><input v-model="inputLon" type='text' placeholder='longitude'></p>
-    <button @click='updateLocation()'>Settings and start </button>
+    <p><label id='center_label' class="mdl-textfield__label">このサイトは位置情報をONにし、指定の緯度経度と現在地の距離を測ります。<br>現在地が指定の位置の半径5km以内であればスマートフォンを扱いの場合バイブレーションが鳴ります</label></p>
+    <p><label id='center_label' class="mdl-textfield__label">Location is: {{ latitude }} {{ longitude }}</label></p>
+    <p><label id='center_label' class="mdl-textfield__label">Location distance is: {{ distance }} km</label></p>
+    <p><label id='field_label'  class="mdl-textfield__label">latitude</label></p>
+    <form action="#">
+      <div class="mdl-textfield mdl-js-textfield">
+        <input class="mdl-textfield__input" pattern="-?[0-9]*(\.[0-9]+)?" v-model="inputLat" type='text'>
+        <span class="mdl-textfield__error">Input is not a number!</span>
+      </div>
+    </form>
+    <form action="#">
+  </form>
+  <p><label id='field_label' class="mdl-textfield__label">longitude</label></p>
+    <form action="#">
+      <div class="mdl-textfield mdl-js-textfield">
+        <input class="mdl-textfield__input" pattern="-?[0-9]*(\.[0-9]+)?" v-model="inputLon" type='text'>
+        <span class="mdl-textfield__error">Input is not a number!</span>
+      </div>
+    </form>
+    <p/>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" @click='updateLocation()'>Settings and start </button>
     <router-view/>
   </div>
 </template>
@@ -61,5 +75,20 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+#locationAlert {
+  padding: 0px 100px 100px 100px;
+  position: relative;
+  text-align: center;
+}
+#center_label {
+  padding: 0px 10px 5px 0px;
+  position: relative;
+  text-align: center;
+}
+#field_label {
+  margin-left: -120px;
+  position: relative;
+  text-align: center;
 }
 </style>
