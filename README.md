@@ -1,4 +1,4 @@
-# laert
+# LAlert
 
 > A Vue.js project
 
