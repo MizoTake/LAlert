@@ -11,17 +11,15 @@
 export default {
   name: 'LocationAlert',
   methods: {
-    updateLocation: function() {
+    updateLocation: function () {
       if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(this.showPosition)
-        var watchID = navigator.geolocation.watchPosition(function(position) {
-          do_something(position.coords.latitude, position.coords.longitude)
-        })
+        navigator.geolocation.getCurrentPosition()
+        navigator.geolocation.watchPosition(this.showPosition)
       } else {
         // this.error = 'Geolocation is not supported.'
       }
     },
-    showPosition: function(position) {
+    showPosition: function (position) {
       // this.lat = position.coords.latitude
       // this.lon = position.coords.longitude
       console.log(position.coords)
