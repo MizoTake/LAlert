@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <p>Lat = {{lat}} Lon ={{lon}}</p>
-    <p>{{error}}</p>
-    <button @click="myFunction()">Click Me</button>
+    <p><input type="text" placeholder="lat"></p>
+    <p><input type="text" placeholder="lon"></p>
+    <button @click="updateLocation()">Settings</button>
     <router-view/>
   </div>
 </template>
@@ -17,15 +17,15 @@ export default {
     lon: ""
   },
   methods: {
-    myFunction() {
+    updateLocation() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(this.showPosition);
+        var watchID = navigator.geolocation.watchPosition(function(position) {
+          do_something(position.coords.latitude, position.coords.longitude);
+        });
       } else {
         this.error = "Geolocation is not supported.";
       }
-      // this.$getLocation(options).then(coordinates => {
-      //   console.log(coordinates);
-      // });
     },
     showPosition(position) {
       this.lat = position.coords.latitude;
