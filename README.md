@@ -2,6 +2,9 @@
 
 > A Vue.js project
 
+指定した座標の半径5kmに近づくとバイブレーションが起こるWebツール
+googlemap使いたかったがtokenの扱いに困ったため、座標直接指定
+
 ## Build Setup
 
 ``` bash
