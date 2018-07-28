@@ -1,8 +1,10 @@
 <template>
   <div id='locationAlert'>
-    <p><input type='text' placeholder='lat'></p>
-    <p><input type='text' placeholder='lon'></p>
-    <button @click='updateLocation()'>Settings</button>
+    <p>Location is: {{ latitude }} {{ longitude }}</p>
+    <p>Location distance is: {{ distance }} km</p>
+    <p><input v-model="inputLat" type='text' placeholder='lat'></p>
+    <p><input v-model="inputLon" type='text' placeholder='lon'></p>
+    <button @click='updateLocation()'>Settings and start </button>
     <router-view/>
   </div>
 </template>
@@ -10,18 +12,36 @@
 <script>
 export default {
   name: 'LocationAlert',
+  data: function () {
+    return {
+      latitude: 0,
+      longitude: 0,
+      inputLat: 0,
+      inputLon: 0,
+      onekmIsLongitude: 0.0090133729745762,
+      onekmIsLatitude: 0.010966404715491394,
+      distance: 0
+    }
+  },
   methods: {
     updateLocation: function () {
       if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition()
-        navigator.geolocation.watchPosition(this.showPosition)
+        navigator.geolocation.getCurrentPosition(this.updatePosition)
+        navigator.geolocation.watchPosition(this.updatePosition)
       } else {
         // this.error = 'Geolocation is not supported.'
       }
     },
-    showPosition: function (position) {
-      // this.lat = position.coords.latitude
-      // this.lon = position.coords.longitude
+    updatePosition: function (position) {
+      this.latitude = position.coords.latitude
+      this.longitude = position.coords.longitude
+      var disLat = this.latitude - this.inputLat
+      var disLon = this.longitude - this.inputLon
+      disLat /= this.onekmIsLatitude
+      disLon /= this.onekmIsLongitude
+      disLat *= disLat
+      disLon *= disLon
+      this.distance = Math.sqrt(disLat + disLon)
       console.log(position.coords)
     }
   }
