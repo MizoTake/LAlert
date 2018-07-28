@@ -1,11 +1,11 @@
 <template>
-  <div id="map">
+  <div
+      id="map">
     <GmapMap
-        :center="{lat:10, lng:10}"
-        :zoom="7"
+        :center="{lat:33.794605, lng:130.528584}"
+        :zoom="17"
         map-type-id="terrain"
-        style="width: 500px; height: 300px"
-        >
+        :style="{width: mapWidth + 'px',height: mapHeight + 'px'}">
         <GmapMarker
             :key="index"
             v-for="(m, index) in markers"
@@ -21,7 +21,17 @@
 
 <script>
 export default {
-  name: "Map"
+  name: "Map",
+  data() {
+    return {
+      mapHeight: window.innerHeight,
+      mapWidth: window.innerWidth
+    };
+  },
+  created() {
+    this.mapWidth = window.innerWidth;
+    this.mapHeight = window.innerHeight;
+  }
 };
 </script>
 
